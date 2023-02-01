@@ -24,4 +24,8 @@ L'application est déployé sur deux région, us-west-1 et eu-west-3. Il y a un 
 
 Avec l'accelerator seul une région est déployé à Paris, et tous les appels sont dirigés vers Paris.
 
-Pour tester le temps de réponse selon la région, il faut appeller le 
+Pour tester le temps de réponse selon la région, il faut appeler ce lien : 
+
+```
+  curl -w "time_total: %{time_total}s\n" -o /dev/null -s --request POST --url http://a128fcac08df49e61.awsglobalaccelerator.com/playlist --header 'authorization: Bearer <KEYCLOAK_TOKEN>' --header 'cache-control: no-cache' --header 'content-type: application/json'  --data '{"id": 157}' && curl -w "time_total: %{time_total}s\n" -o /dev/null -s --request GET --header 'authorization: Bearer <KEYCLOAK_TOKEN>' --url http://a128fcac08df49e61.awsglobalaccelerator.com/playlist
+```
