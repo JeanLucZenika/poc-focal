@@ -1,0 +1,18 @@
+aws:
+  dynamodb:
+    endpoint: ${DB_ENDPOINT}
+  access:
+    key: ${ACCESS_KEY}
+    secret-key: ${SECRET_KEY}
+  region: eu-west-3
+management:
+  endpoints.web:
+    base-path: /monitoring
+    exposure.include: "*"
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    org.hibernate: DEBUG
+    org.h2: DEBUG

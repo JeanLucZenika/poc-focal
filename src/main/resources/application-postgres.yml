@@ -1,0 +1,31 @@
+spring:
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    primary:
+      driver-class-name: org.postgresql.Driver
+      username: ${PRIMARY_DB_USER}
+      password: ${PRIMARY_DB_PASSWORD}
+      url: ${PRIMARY_DB_URL}
+    secondary:
+      driver-class-name: org.postgresql.Driver
+      username: ${SECONDARY_DB_USER}
+      password: ${SECONDARY_DB_PASSWORD}
+      url: ${SECONDARY_DB_URL}
+
+# This section allows you to see metrics when launching the service using http://127.0.0.1:8080/monitoring/metrics
+management:
+  endpoints.web:
+    base-path: /monitoring
+    exposure.include: "*"
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    org.hibernate: DEBUG
+    org.h2: DEBUG
